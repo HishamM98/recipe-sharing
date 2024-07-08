@@ -1,0 +1,36 @@
+<div class="w-[27rem] px-6 pb-4 rounded-lg shadow-md">
+    <h2 mat-dialog-title>Create New Recipe</h2>
+
+    <form [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
+        <mat-form-field class="w-full">
+            <mat-label class="text-gray-200">Title</mat-label>
+            <input matInput placeholder="Enter Recipe Title" formControlName="title"
+                class="py-2 px-3 text-gray-200 mt-1 focus:shadown-outline">
+        </mat-form-field>
+
+        <mat-form-field class="w-full">
+            <mat-label class="text-gray-200">Description</mat-label>
+            <textarea matInput placeholder="Enter Recipe Desc." cdkTextareaAutosize cdkAutosizeMinRows="1"
+                cdkAutosizeMaxRows="5" formControlName="description"
+                class="py-2 px-3 text-gray-200 mt-1 focus:shadown-outline"></textarea>
+        </mat-form-field>
+
+        <mat-form-field class="w-full">
+            <mat-label class="text-gray-200">Image Url</mat-label>
+            <input type="url" matInput placeholder="Enter Image URL" formControlName="image"
+                class="py-2 px-3 text-gray-200 mt-1 focus:shadown-outline">
+        </mat-form-field>
+
+        <mat-label id="radio-label" class="text-gray-200">Vegitarian?</mat-label>
+        <mat-radio-group formControlName="vegitarian" aria-labelledby="radio-label">
+            <mat-radio-button value="1">Yes</mat-radio-button>
+            <mat-radio-button value="0">No</mat-radio-button>
+        </mat-radio-group>
+
+        <mat-dialog-actions class="w-full flex justify-between">
+            <button mat-button mat-dialog-close color="warn">Close</button>
+            <button class="right-0" type="submit" [disabled]="recipeForm.invalid" mat-raised-button mat-dialog-close
+                color="primary">Create</button>
+        </mat-dialog-actions>
+    </form>
+</div>
